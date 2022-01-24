@@ -1,0 +1,21 @@
+{% extends 'app/base.html' %}
+{% block content %}
+
+<div class="row">
+    <div style='margin-bottom: 24px; margin-left: 190px; width: 720px;' class="col-lg-4">
+        <img class="thumbnail" src="{{data.imageURL}}" alt="">
+        <div class="box-element product">
+            <h5><strong>{{data.dish}}</strong></h5>
+            <hr>
+            <h6><strong style="text-decoration: underline;">Ingredients: </strong>{{data.ingredients}}</h6>
+            <br><br>
+            <h6><strong style="text-decoration: underline;">Recipe: </strong>{{data.description}}</h6>
+            <hr>
+            {% if data.user == request.user %}
+            <a class="btn btn-outline-success" href="{% url 'update_recipe' data.id %}">Update</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

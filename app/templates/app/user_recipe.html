@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<form method="GET" action="{% url 'search' %}" class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="ENTER THE DISH NAME(CASE SENSETIVE)" aria-label="Search" name="query" id="search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<div class="row">
+    {% if data %}
+    {% for i in data %}
+    <div style='margin-bottom: 24px;' class="col-lg-4">
+        <img class="thumbnail" src="{{i.imageURL}}" alt="">
+        <div class="box-element product">
+            <h6><strong>{{i.dish}}</strong></h6>
+            <hr>
+            <a class="btn btn-outline-success" href="{% url 'view_recipe' i.id %}">View</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h4 style="margin-left: 409px;">You have not any recipe!!! <br><a style="margin-left: 75px; text-decoration: none;" href="{% url 'createrecipe' %}">Create Now!</a></h4>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <form action="{% url 'createrecipe' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"></label>
+            <input type="text" name="dish" class="form-control" id="exampleFormControlInput1" placeholder="Enter name of the dish...">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"></label>
+            <input type="text" name="ingredients" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter ingredients of the dish...">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"></label>
+            <input type="text" name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Recipe of the dish...">
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Upload the image of your dish</label>
+            <input name="image" class="form-control" type="file" id="formFile">
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+    </form>
+
+{% endblock %}

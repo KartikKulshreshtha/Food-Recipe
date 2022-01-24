@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    {% if data %}
+    <h1 style="text-align: center;">Update your Recipe</h1>
+    <form action="{% url 'update_recipe' data.id %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"></label>
+            <input type="text" name="dish" class="form-control" value="{{data.dish}}" id="exampleFormControlInput1" placeholder="Enter name of the dish...">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"></label>
+            <input type="text" name="ingredients" class="form-control" value="{{data.ingredients}}" id="exampleFormControlTextarea1" rows="3" placeholder="Enter ingredients of the dish...">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"></label>
+            <input type="text" name="description" class="form-control" value="{{data.description}}" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Recipe of the dish...">
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label"></label>
+            <input name="image" class="form-control" required type="file" value="{{data.image}}" id="formFile">
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+    </form>
+    {% endif %}
+
+{% endblock %}
