@@ -7,7 +7,7 @@ from .models import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
-# from .filters import DjangoFilters
+from django.contrib.auth.decorators import login_required
 
 
 def main(request):
@@ -31,13 +31,14 @@ def search(request):
         }
         return render(request, 'app/main.html', context)
 
+@login_required(login_url='login')
 def users_recipe(request):
     x = Recipe.objects.filter(user = request.user)
     context = {
         'data': x
     }
-    print("HEy")
     return render(request, 'app/user_recipe.html', context)
+
 
 def view_recipe(request, id):
     x = Recipe.objects.get(id = id)
@@ -46,6 +47,7 @@ def view_recipe(request, id):
     }
     return render(request, 'app/view_recipe.html', context)
 
+@login_required(login_url='login')
 def update_recipe(request, id):
     x = Recipe.objects.get(id = id)
     context = {
@@ -90,7 +92,7 @@ def login_page(request):
             
     return render(request, 'app/login_page.html')
 
-
+@login_required(login_url='login')
 def createrecipe(request):
     if request.method == 'POST':
         x = Recipe()

@@ -21,6 +21,12 @@
     margin-right: 20px;
     text-decoration: none;
   }
+  .hello-msg1{
+    font-size: 18px;
+    color: white;
+    margin-right: 5px;
+    text-decoration: none;
+  }
 </style>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -40,8 +46,12 @@
           </li>
         </ul>
       </div>
+      {% if request.user.is_authenticated %}
       <span class="hello-msg">Hello, {{request.user}}</span>
-      <span><a class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+      <span><a class="hello-msg" href="{% url 'logout' %}">Logout?</a></span>
+      {% else %}
+      <span><a class="hello-msg1" href="{% url 'login' %}">Login</a></span><span><a class="hello-msg" href="{% url 'register' %}">/ Register</a></span>
+      {% endif %}
     </div>
   </nav>
   <div class="container">

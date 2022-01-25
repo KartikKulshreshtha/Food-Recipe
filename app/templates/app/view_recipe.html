@@ -7,9 +7,9 @@
         <div class="box-element product">
             <h5><strong>{{data.dish}}</strong></h5>
             <hr>
-            <h6><strong style="text-decoration: underline;">Ingredients: </strong>{{data.ingredients}}</h6>
-            <br><br>
-            <h6><strong style="text-decoration: underline;">Recipe: </strong>{{data.description}}</h6>
+            <h6><strong style="font-size: 20px;">Ingredients : </strong>{{data.ingredients}}</h6>
+            <br>
+            <h6><strong style="font-size: 20px;">Recipe : </strong>{{data.description}}</h6>
             <hr>
             {% if data.user == request.user %}
             <a class="btn btn-outline-success" href="{% url 'update_recipe' data.id %}">Update</a>

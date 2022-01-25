@@ -7,6 +7,7 @@
     <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
 <div class="row">
+    {% if dishes %}
     {% for i in dishes %}
     <div style='margin-bottom: 24px;' class="col-lg-4">
         <img class="thumbnail" src="{{i.imageURL}}" alt="">
@@ -17,6 +18,9 @@
         </div>
     </div>
     {% endfor %}
+    {% else %}
+    <h1 style="margin-left: 282px;">No match found for this recipe <br><a style="margin-left: 155px; text-decoration: none;" href="{% url 'createrecipe' %}">Create one</a></h1>
+    {% endif %}
 </div>
 
 
